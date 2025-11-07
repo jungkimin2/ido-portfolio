@@ -298,6 +298,7 @@ body::before {
     border-bottom: none;
     opacity: 0 !important;
     transform: translateY(30px) !important;
+    transition: opacity 2s ease-out, transform 2s ease-out;
 }
 
 .theater-header {
