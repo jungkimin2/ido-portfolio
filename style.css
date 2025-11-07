@@ -296,9 +296,20 @@ body::before {
     padding: 80px 40px;
     background: linear-gradient(135deg, #ebe6db 0%, #d9d0c1 100%);
     border-bottom: none;
+}
+
+/* 영상 섹션 숨김 상태 */
+.theater-section.hidden {
     opacity: 0 !important;
     transform: translateY(30px) !important;
-    transition: opacity 2s ease-out, transform 2s ease-out;
+    transition: opacity 2s ease-out, transform 2s ease-out !important;
+}
+
+/* 영상 섹션 표시 상태 */
+.theater-section.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 2s ease-out, transform 2s ease-out !important;
 }
 
 .theater-header {
