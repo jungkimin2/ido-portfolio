@@ -4,11 +4,10 @@ let galleryItems = [];
 
 // 상영관 비디오 목록
 const theaterVideos = [
-    'videos/IMG_4029.MOV',
-    'videos/0ca90b3de0494b7788831d25f378a160.MOV',
-    'videos/20251020_200644.MP4',
-    'videos/_talkv_wylzVC3BAf_81yCcwXx1ob08nlTSlhhak_talkv_high.MP4',
-    'videos/_talkv_wyAMBC78lm_A3AgbPbVmpn8k07WwRVNk0_talkv_high.MP4'
+    'videos/video1.mp4',
+    'videos/video2.mp4',
+    'videos/video3.mp4',
+    'videos/video4.mp4'
 ];
 
 // 상영관 비디오 재생
@@ -184,7 +183,9 @@ if (theaterSection) {
     theaterSection.style.transform = 'translateY(20px)';
     theaterSection.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
 
+    // 페이지 로드 후 5초 뒤에 무조건 등장
     setTimeout(() => {
-        observer.observe(theaterSection);
-    }, 5000); // 5초 후에 관찰 시작
+        theaterSection.style.opacity = '1';
+        theaterSection.style.transform = 'translateY(0)';
+    }, 5000); // 5초 후에 등장
 }
