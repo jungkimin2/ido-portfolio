@@ -45,6 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
             item.style.transform = `translateY(0) rotate(${rotation}deg)`;
         }, index * 50);
     });
+
+    // 영상 섹션은 5초 후에 안개 속에서 천천히 등장
+    const theaterSection = document.querySelector('.theater-section');
+    if (theaterSection) {
+        // 페이지 로드 후 5초 뒤에 안개 효과와 함께 등장
+        setTimeout(() => {
+            theaterSection.style.transition = 'opacity 2s ease-out, transform 2s ease-out';
+            theaterSection.style.opacity = '1';
+            theaterSection.style.transform = 'translateY(0)';
+        }, 5000); // 5초 후에 2초 동안 천천히 등장
+    }
 });
 
 // 모달 열기
@@ -175,14 +186,3 @@ document.querySelectorAll('.meaning-section, .philosophy-section, .profile-secti
     section.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
     observer.observe(section);
 });
-
-// 영상 섹션은 5초 후에 안개 속에서 천천히 등장
-const theaterSection = document.querySelector('.theater-section');
-if (theaterSection) {
-    // 페이지 로드 후 5초 뒤에 안개 효과와 함께 등장
-    setTimeout(() => {
-        theaterSection.style.transition = 'opacity 2s ease-out, transform 2s ease-out';
-        theaterSection.style.opacity = '1';
-        theaterSection.style.transform = 'translateY(0)';
-    }, 5000); // 5초 후에 2초 동안 천천히 등장
-}
