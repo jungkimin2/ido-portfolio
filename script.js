@@ -107,10 +107,10 @@ function updateModalMedia(direction = 'next') {
     const modalImg = document.getElementById('modalImage');
     const currentItem = galleryItems[currentMediaIndex];
 
-    // 슬라이드 + 페이드 효과
-    const startTransform = direction === 'next' ? 'translateX(50px)' : 'translateX(-50px)';
+    // 부드러운 슬라이드 + 페이드 효과
+    const startTransform = direction === 'next' ? 'translateX(100px) scale(0.95)' : 'translateX(-100px) scale(0.95)';
 
-    modalImg.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    modalImg.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
     modalImg.style.opacity = '0';
     modalImg.style.transform = startTransform;
 
@@ -119,10 +119,11 @@ function updateModalMedia(direction = 'next') {
         modalImg.src = img.src;
 
         setTimeout(() => {
+            modalImg.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
             modalImg.style.opacity = '1';
-            modalImg.style.transform = 'translateX(0)';
+            modalImg.style.transform = 'translateX(0) scale(1)';
         }, 50);
-    }, 300);
+    }, 500);
 }
 
 // 키보드 네비게이션
