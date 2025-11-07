@@ -446,6 +446,12 @@ body::before {
     max-height: calc(90vh - 80px);
     display: block;
     margin: 0 auto;
+    /* 모바일 하드웨어 가속 활성화 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: opacity, transform;
 }
 
 .close {
