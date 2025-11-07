@@ -49,14 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // 영상 섹션은 5초 후에 안개 속에서 천천히 등장
     const theaterSection = document.querySelector('.theater-section');
     if (theaterSection) {
-        // 강제로 숨김 상태 유지
-        theaterSection.style.setProperty('opacity', '0', 'important');
-        theaterSection.style.setProperty('transform', 'translateY(30px)', 'important');
-
         // 페이지 로드 후 5초 뒤에 안개 효과와 함께 등장
         setTimeout(() => {
-            theaterSection.style.setProperty('opacity', '1', 'important');
-            theaterSection.style.setProperty('transform', 'translateY(0)', 'important');
+            theaterSection.classList.remove('hidden');
+            theaterSection.classList.add('visible');
         }, 5000); // 5초 후에 2초 동안 천천히 등장
     }
 });
