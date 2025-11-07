@@ -176,16 +176,13 @@ document.querySelectorAll('.meaning-section, .philosophy-section, .profile-secti
     observer.observe(section);
 });
 
-// 영상 섹션은 5초 후에 은은하게 등장
+// 영상 섹션은 5초 후에 안개 속에서 천천히 등장
 const theaterSection = document.querySelector('.theater-section');
 if (theaterSection) {
-    theaterSection.style.opacity = '0';
-    theaterSection.style.transform = 'translateY(20px)';
-    theaterSection.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
-
-    // 페이지 로드 후 5초 뒤에 무조건 등장
+    // 페이지 로드 후 5초 뒤에 안개 효과와 함께 등장
     setTimeout(() => {
+        theaterSection.style.transition = 'opacity 2s ease-out, transform 2s ease-out';
         theaterSection.style.opacity = '1';
         theaterSection.style.transform = 'translateY(0)';
-    }, 5000); // 5초 후에 등장
+    }, 5000); // 5초 후에 2초 동안 천천히 등장
 }
