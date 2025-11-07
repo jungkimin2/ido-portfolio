@@ -301,22 +301,30 @@ body::before {
 /* 모바일에서만 영상 섹션 초기 숨김 */
 @media (max-width: 768px) {
     .theater-section.mobile-hidden {
-        display: none !important;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.05);
     }
 
     .theater-section.mobile-visible {
-        display: block !important;
-        animation: fadeIn 1s ease-out;
+        opacity: 1;
+        pointer-events: auto;
+        animation: fogFadeIn 2s ease-out forwards;
     }
 
-    @keyframes fadeIn {
-        from {
+    @keyframes fogFadeIn {
+        0% {
             opacity: 0;
-            transform: translateY(20px);
+            transform: scale(1.05);
+            filter: blur(20px) brightness(1.2);
         }
-        to {
+        50% {
+            filter: blur(10px) brightness(1.1);
+        }
+        100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1);
+            filter: blur(0px) brightness(1);
         }
     }
 }
