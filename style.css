@@ -296,6 +296,8 @@ body::before {
     padding: 80px 40px;
     background: linear-gradient(135deg, #ebe6db 0%, #d9d0c1 100%);
     border-bottom: none;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .theater-header {
