@@ -1,0 +1,558 @@
+/* 스케치북 테마 - 아이보리 질감 디자인 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nanum Myeongjo', 'Georgia', 'Times New Roman', serif;
+    background: #f5f1e8;
+    background-image:
+        linear-gradient(0deg, rgba(0,0,0,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 100vh;
+    color: #2c2416;
+    position: relative;
+}
+
+/* 종이 질감 오버레이 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* 히어로 섹션 - 스케치북 표지 */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f9f6f0 0%, #ede8dd 100%);
+    position: relative;
+    border-bottom: 3px solid rgba(139, 115, 85, 0.2);
+    box-shadow: inset 0 -20px 40px rgba(0,0,0,0.05);
+}
+
+/* 표지 장식 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 2px solid rgba(139, 115, 85, 0.15);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.name-section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(139, 115, 85, 0.1);
+}
+
+.main-name {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: #5a4a3a;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    font-family: 'Georgia', serif;
+}
+
+.name-eng {
+    font-size: 2rem;
+    color: #8b7355;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+}
+
+.philosophy-quote {
+    margin-top: 40px;
+    padding: 25px 40px;
+    border-left: 3px solid #c4a57b;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.quote-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #6b5d4f;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+/* 의미 섹션 - 스케치북 페이지 */
+.meaning-section, .philosophy-section, .profile-section {
+    padding: 80px 40px;
+    background: #faf8f3;
+    margin: 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    position: relative;
+}
+
+/* 왼쪽 제본 효과 */
+.meaning-section::before,
+.philosophy-section::before,
+.profile-section::before,
+.growth-section::before,
+.theater-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    background: linear-gradient(to right,
+        rgba(139, 115, 85, 0.05) 0%,
+        transparent 100%
+    );
+    border-right: 2px dashed rgba(139, 115, 85, 0.1);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #5a4a3a;
+    margin-bottom: 30px;
+    padding-left: 80px;
+    font-weight: 300;
+    position: relative;
+}
+
+.section-title::before {
+    content: '✎';
+    position: absolute;
+    left: 40px;
+    color: #c4a57b;
+    font-size: 2rem;
+}
+
+.name-meaning, .philosophy-content, .profile-content {
+    padding-left: 80px;
+    max-width: 900px;
+}
+
+.name-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 25px 30px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 4px solid #c4a57b;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.character {
+    font-size: 2.5rem;
+    color: #5a4a3a;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.meaning {
+    font-size: 0.85rem;
+    color: #6b5d4f;
+    line-height: 1.6;
+}
+
+/* 성장 앨범 섹션 - 사진첩 페이지 */
+.growth-section {
+    padding: 80px 40px 100px;
+    background: #faf8f3;
+    margin: 0;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    position: relative;
+}
+
+.album-page {
+    margin-bottom: 60px;
+}
+
+.page-header {
+    padding-left: 80px;
+    margin-bottom: 40px;
+}
+
+.page-number {
+    font-size: 0.9rem;
+    color: #a89078;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    color: #5a4a3a;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.page-description {
+    font-size: 0.8rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+/* 사진첩 그리드 - 폴라로이드 스타일 */
+.photo-album {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 0 40px 0 80px;
+}
+
+.photo-frame {
+    background: white;
+    padding: 12px 12px 35px 12px;
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.1),
+        0 2px 4px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    transform: rotate(0deg);
+}
+
+.photo-frame:nth-child(3n+1) {
+    transform: rotate(-1deg);
+}
+
+.photo-frame:nth-child(3n+2) {
+    transform: rotate(1deg);
+}
+
+.photo-frame:nth-child(3n) {
+    transform: rotate(-0.5deg);
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-5px);
+    box-shadow:
+        0 12px 24px rgba(0,0,0,0.15),
+        0 6px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    right: 12px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #8b7355;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+/* 상영관 섹션 - 빈티지 시어터 */
+.theater-section {
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #ebe6db 0%, #d9d0c1 100%);
+    border-bottom: none;
+}
+
+.theater-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-left: 0;
+}
+
+.theater-title {
+    font-size: 2.5rem;
+    color: #5a4a3a;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.theater-subtitle {
+    font-size: 1.1rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+.theater-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+.theater-screen {
+    background: #2c2416;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow:
+        inset 0 4px 8px rgba(0,0,0,0.3),
+        0 8px 16px rgba(0,0,0,0.2);
+}
+
+.theater-screen video {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.theater-seats {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.video-selector {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.video-selector:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.video-selector.active {
+    background: #c4a57b;
+    color: white;
+    border-color: #a89068;
+}
+
+.seat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.video-title {
+    font-size: 0.85rem;
+    color: #5a4a3a;
+    margin: 0;
+}
+
+.video-selector.active .video-title {
+    color: white;
+}
+
+/* 모달 - 스케치북 확대 보기 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 36, 22, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    background: white;
+    padding: 20px 20px 60px 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: calc(90vh - 80px);
+    display: block;
+    margin: 0 auto;
+}
+
+.close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: #5a4a3a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close:hover {
+    background: #c4a57b;
+    transform: rotate(90deg);
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-nav:hover {
+    background: #c4a57b;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+    left: -25px;
+}
+
+.next {
+    right: -25px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .main-name {
+        font-size: 2.5rem;
+    }
+
+    .name-eng {
+        font-size: 1.3rem;
+    }
+
+    .quote-text {
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        padding-left: 60px;
+    }
+
+    .section-title::before {
+        left: 30px;
+    }
+
+    .name-meaning, .philosophy-content, .profile-content {
+        padding-left: 60px;
+    }
+
+    .photo-album {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+        padding-left: 60px;
+    }
+
+    .photo-frame img {
+        height: 180px;
+    }
+
+    .page-header {
+        padding-left: 60px;
+    }
+
+    .theater-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero::before,
+    .hero::after {
+        display: none;
+    }
+
+    .photo-album {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding-left: 40px;
+    }
+
+    .photo-frame {
+        padding: 8px 8px 25px 8px;
+    }
+
+    .photo-frame img {
+        height: 150px;
+    }
+
+    .meaning-section::before,
+    .philosophy-section::before,
+    .profile-section::before,
+    .growth-section::before,
+    .theater-section::before {
+        width: 30px;
+    }
+}
+
+/* 인쇄 스타일 */
+@media print {
+    body {
+        background: white;
+    }
+
+    .modal, .theater-section {
+        display: none;
+    }
+}
