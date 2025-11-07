@@ -298,18 +298,27 @@ body::before {
     border-bottom: none;
 }
 
-/* 영상 섹션 숨김 상태 */
-.theater-section.hidden {
-    opacity: 0 !important;
-    transform: translateY(30px) !important;
-    transition: opacity 2s ease-out, transform 2s ease-out !important;
-}
+/* 모바일에서만 영상 섹션 초기 숨김 */
+@media (max-width: 768px) {
+    .theater-section.mobile-hidden {
+        display: none !important;
+    }
 
-/* 영상 섹션 표시 상태 */
-.theater-section.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: opacity 2s ease-out, transform 2s ease-out !important;
+    .theater-section.mobile-visible {
+        display: block !important;
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
 .theater-header {
