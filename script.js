@@ -46,14 +46,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }, index * 50);
     });
 
-    // 영상 섹션은 5초 후에 안개 속에서 천천히 등장
+    // 모바일에서만 영상 섹션 5초 후 등장
     const theaterSection = document.querySelector('.theater-section');
-    if (theaterSection) {
-        // 페이지 로드 후 5초 뒤에 안개 효과와 함께 등장
+    const isMobile = window.innerWidth <= 768;
+
+    if (theaterSection && isMobile) {
+        // 모바일에서만 초기 숨김
+        theaterSection.classList.add('mobile-hidden');
+
+        // 5초 후 나타남
         setTimeout(() => {
-            theaterSection.classList.remove('hidden');
-            theaterSection.classList.add('visible');
-        }, 5000); // 5초 후에 2초 동안 천천히 등장
+            theaterSection.classList.remove('mobile-hidden');
+            theaterSection.classList.add('mobile-visible');
+        }, 5000);
     }
 });
 
@@ -88,28 +93,36 @@ function closeModal() {
 // 이전 미디어
 function prevMedia() {
     currentMediaIndex = (currentMediaIndex - 1 + galleryItems.length) % galleryItems.length;
-    updateModalMedia();
+    updateModalMedia('prev');
 }
 
 // 다음 미디어
 function nextMedia() {
     currentMediaIndex = (currentMediaIndex + 1) % galleryItems.length;
-    updateModalMedia();
+    updateModalMedia('next');
 }
 
 // 모달 미디어 업데이트
-function updateModalMedia() {
+function updateModalMedia(direction = 'next') {
     const modalImg = document.getElementById('modalImage');
     const currentItem = galleryItems[currentMediaIndex];
 
-    // 페이드 효과
+    // 슬라이드 + 페이드 효과
+    const startTransform = direction === 'next' ? 'translateX(50px)' : 'translateX(-50px)';
+
+    modalImg.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     modalImg.style.opacity = '0';
+    modalImg.style.transform = startTransform;
 
     setTimeout(() => {
         const img = currentItem.querySelector('img');
         modalImg.src = img.src;
-        modalImg.style.opacity = '1';
-    }, 150);
+
+        setTimeout(() => {
+            modalImg.style.opacity = '1';
+            modalImg.style.transform = 'translateX(0)';
+        }, 50);
+    }, 300);
 }
 
 // 키보드 네비게이션
