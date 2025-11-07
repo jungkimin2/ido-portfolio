@@ -148,8 +148,11 @@ document.addEventListener('keydown', function(e) {
 // 터치 제스처 지원
 let touchStartX = 0;
 let touchEndX = 0;
+let touchHandlersAdded = false;
 
 function addTouchSupport() {
+    if (touchHandlersAdded) return; // 중복 등록 방지
+
     const modal = document.getElementById('mediaModal');
 
     modal.addEventListener('touchstart', function(e) {
@@ -160,6 +163,8 @@ function addTouchSupport() {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
     }, { passive: true });
+
+    touchHandlersAdded = true;
 }
 
 function handleSwipe() {
