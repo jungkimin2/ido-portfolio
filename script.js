@@ -50,14 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const theaterSection = document.querySelector('.theater-section');
     const isMobile = window.innerWidth <= 768;
 
+    console.log('Screen width:', window.innerWidth);
+    console.log('Is mobile:', isMobile);
+    console.log('Theater section found:', !!theaterSection);
+
     if (theaterSection && isMobile) {
         // 모바일에서만 초기 숨김
         theaterSection.classList.add('mobile-hidden');
+        console.log('Added mobile-hidden class');
 
         // 5초 후 나타남
         setTimeout(() => {
             theaterSection.classList.remove('mobile-hidden');
             theaterSection.classList.add('mobile-visible');
+            console.log('Added mobile-visible class after 5 seconds');
         }, 5000);
     }
 });
